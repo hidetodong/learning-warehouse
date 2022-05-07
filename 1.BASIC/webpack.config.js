@@ -76,7 +76,8 @@ module.exports = (env,argv) => {
                                     import:true,
                                     modules:true
                                 }
-                            }
+                            },
+                            path.resolve(__dirname,'loaders/logger1.js')
                         ]
                     },
                     {
