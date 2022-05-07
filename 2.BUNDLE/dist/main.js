@@ -15,7 +15,6 @@ function require(moduleId) {
 
 
 require.r = (exports) => {
-  // 给exports 定义个 tag叫 module
   Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' }); // [object Module]
   Object.defineProperty(exports, '_esModule', { value: true }); // exports._esModule = true
 }
