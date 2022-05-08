@@ -1,18 +1,3 @@
-/*
- * @Author: hidetodong
- * @Date: 2022-05-08 15:00:02
- * @LastEditTime: 2022-05-08 15:00:03
- * @LastEditors: hidetodong
- * @Description: 
- * @FilePath: /4.FLOW/src/entry2 copy.js
- * HIDETOXIC - 版权所有
- */
-/*
- * @Author: hidetodong
- * @Date: 2022-05-08 15:00:00
- * @LastEditTime: 2022-05-08 15:00:00
- * @LastEditors: hidetodong
- * @Description: 
- * @FilePath: /4.FLOW/src/entry2.js
- * HIDETOXIC - 版权所有
- */
+let title = require('./title')
+
+console.log(title)
