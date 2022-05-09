@@ -1,6 +1,4 @@
-const { runLoaders } = require('loader-runner')
-
-
+const { runLoaders } = require('./loader-runner')
 const path = require('path')
 const fs = require('fs')
 
@@ -64,8 +62,8 @@ loaders = loaders.map(loader => path.resolve(__dirname,'loaders',loader))
 runLoaders({
     resource,
     loaders,
-    // 可以先不管
-    // context:{},
+    // 可以先不管 //默认的上下文对象 会成为loader执行时的this指针，getOptions
+    context:{},
     // readResource:fs.readFile
 },(err,result)=>{
     console.log(result)

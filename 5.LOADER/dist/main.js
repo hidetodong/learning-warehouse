@@ -1,10 +1,10 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./myLoaders/less-loader.js!./src/index.less":
-/*!***************************************************!*\
-  !*** ./myLoaders/less-loader.js!./src/index.less ***!
-  \***************************************************/
+/***/ "./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less":
+/*!*****************************************************************************!*\
+  !*** ./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less ***!
+  \*****************************************************************************/
 /***/ ((module) => {
 
 module.exports = "#root {\n  color: red;\n}\n"
@@ -19,7 +19,7 @@ module.exports = "#root {\n  color: red;\n}\n"
 
 
         let style = document.createElement("style")
-        style.innerHTML = __webpack_require__(/*! !!../myLoaders/less-loader.js!./index.less */ "./myLoaders/less-loader.js!./src/index.less");
+        style.innerHTML = __webpack_require__(/*! !!../myLoaders/css-loader.js!../myLoaders/less-loader.js!./index.less */ "./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less");
         document.head.appendChild(style)
         
 
