@@ -1,27 +1,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less":
-/*!*****************************************************************************!*\
-  !*** ./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less ***!
-  \*****************************************************************************/
+/***/ "./src/march.png":
+/*!***********************!*\
+  !*** ./src/march.png ***!
+  \***********************/
 /***/ ((module) => {
 
-module.exports = "#root {\n  color: red;\n}\n"
-
-/***/ }),
-
-/***/ "./src/index.less":
-/*!************************!*\
-  !*** ./src/index.less ***!
-  \************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-
-        let style = document.createElement("style")
-        style.innerHTML = __webpack_require__(/*! !!../myLoaders/css-loader.js!../myLoaders/less-loader.js!./index.less */ "./myLoaders/css-loader.js!./myLoaders/less-loader.js!./src/index.less");
-        document.head.appendChild(style)
-        
+module.exports = "1652175292774.png"
 
 /***/ })
 
@@ -61,7 +47,12 @@ var __webpack_exports__ = {};
   \**********************/
 
 
-__webpack_require__(/*! ./index.less */ "./src/index.less");
+var logo = __webpack_require__(/*! ./march.png */ "./src/march.png");
+
+console.log(logo);
+var img = new Image();
+img.src = logo["default"];
+document.body.appendChild(img);
 })();
 
 /******/ })()
