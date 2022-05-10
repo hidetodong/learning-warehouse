@@ -1,22 +1,12 @@
-const { SyncHook } = require('tapable')
+const { SyncHook } = require("./tapable");
+let syncHook = new SyncHook(["name", "age"]);
 
-const hook = new SyncHook(['name','age'])
-
-// events tap注册 call触发
-hook.tap('1',(name,age)=>{
-    console.log('1',name,age)
-    return '1'
-})
-
-hook.tap('2',(name,age)=>{
-    console.log('2',name,age)
-    return '2'
-})
-
-hook.tap('3',(name,age)=>{
-    console.log('3',name,age)
-    return '3'
-})
-
-
-hook.call('zhufeng',10)
+let fn1 = (name, age) => {
+    console.log(1, name, age);
+}
+syncHook.tap({name:'1'},fn1);
+let fn2 =  (name, age) => {
+    console.log(2, name, age);
+}
+syncHook.tap("2",fn2);
+syncHook.call("zhufeng", 10);
