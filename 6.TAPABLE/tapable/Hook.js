@@ -1,7 +1,7 @@
 /*
  * @Author: hidetodong
  * @Date: 2022-05-10 21:41:29
- * @LastEditTime: 2022-05-10 23:29:22
+ * @LastEditTime: 2022-05-11 21:20:26
  * @LastEditors: hidetodong
  * @Description: Hook
  * @FilePath: /6.TAPABLE/tapable/Hook.js
@@ -15,7 +15,13 @@ class Hook {
         this.taps = []// 用来存放回调函数的数组
         this.call = CALL_DELEGATE;// 
         this.callAsync = CALL_ASYNC_DELEGATE;//
+        this.promise = CALL_PROMISE_DELEGATE;//
         this._x = null
+        this.interceptors = [];
+    }
+
+    intercept(interceptor){
+        this.interceptors.push(interceptor)
     }
     // 注册
     tap(options,fn){
@@ -26,9 +32,9 @@ class Hook {
         this._tap('async',options,fn)
     }
 
-    // tapPromise(options,fn){
-    //     this._tap('promise',options,fn)
-    // }
+    tapPromise(options,fn){
+        this._tap('promise',options,fn)
+    }
     
 
     _tap(type,options,fn){
@@ -42,10 +48,21 @@ class Hook {
             type,
             fn
         }
-        this._insert(tapInfo)
+
+        this.runRegisterInterceptors(tapInfo);
+        this._insert(tapInfo);
+    }
+
+    runRegisterInterceptors(tapInfo){
+        for(const interceptor of this.interceptors){
+            if(interceptor.register){
+                interceptor.register(tapInfo)
+            }
+        }
     }
 
     _insert(tapInfo){
+
         this.taps.push(tapInfo)
     }
 
@@ -53,7 +70,8 @@ class Hook {
         return this.compile({
             taps:this.taps, // {name,fn.type}
             args:this.args, // 形参数组 ['name','age']
-            type
+            type,
+            interceptors:this.interceptors
         });
     }
 
@@ -71,6 +89,11 @@ const CALL_DELEGATE = function(...args){
 const CALL_ASYNC_DELEGATE = function(...args){
     this.callAsync = this._createCall('async')
     return this.callAsync(...args)
+}
+
+const CALL_PROMISE_DELEGATE = function(...args){
+    this.promise = this._createCall('promise')
+    return this.promise(...args)
 }
 
 module.exports = Hook

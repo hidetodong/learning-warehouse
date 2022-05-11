@@ -1,7 +1,7 @@
 /*
  * @Author: hidetodong
  * @Date: 2022-05-10 23:09:03
- * @LastEditTime: 2022-05-10 23:09:36
+ * @LastEditTime: 2022-05-11 20:41:51
  * @LastEditors: hidetodong
  * @Description: 
  * @FilePath: /6.TAPABLE/tapable/AsyncParallelHook.js
@@ -13,8 +13,8 @@ const HookCodeFactory = require('./HookCodeFactory')
 
 // 同步钩子 代码工厂
 class AsyncParallelHookCodeFactory extends HookCodeFactory {
-    content(){
-        return this.callTapsSeries();
+    content({ onDone }){
+        return this.callTapsParallel({ onDone });
     }
 }
 
